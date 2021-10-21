@@ -8,10 +8,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     private Object TextView;
-    String palabraOculta = "CETYS";
+    Random aleatorio = new Random();
+    String[] listaPalabras = {"mesa","Ordenador","tECLADO","pLaTaNo","CETYS", "Clase", "perro", "aire"};
+    String palabra = listaPalabras[aleatorio.nextInt(listaPalabras.length)];
     int numeroDeFallos = 0;
 
     @Override
@@ -32,13 +36,21 @@ public class MainActivity extends AppCompatActivity {
         boton.setEnabled(false);
         chequeaLetra(boton.getText().toString());
     }
-     private void chequeaLetra(String letra){
+    private String colocaGuiones(){
+        String barras = "";
+        for (int i = 0; i < palabra.length(); i++) {
+            barras += "_ ";
+        }
+        return barras;
+
+    }
+     public void chequeaLetra(String letra){
         letra.toUpperCase();
         TextView textoGuiones = (TextView) findViewById(R.id.palabraConGuiones);
         String palabraConGuiones = textoGuiones.getText().toString();
         boolean acierto = false;
-        for (int i=0; i<palabraOculta.length(); i++){
-            if (palabraOculta.charAt(i) == letra.charAt(0)){
+        for (int i = 0; i< palabra.length(); i++){
+            if (palabra.charAt(i) == letra.charAt(0)){
                 palabraConGuiones = palabraConGuiones.substring(0,2*i)
                         +letra
                         +palabraConGuiones.substring(2*i+1);

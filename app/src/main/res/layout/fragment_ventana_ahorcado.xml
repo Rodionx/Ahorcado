@@ -16,7 +16,7 @@
         android:layout_gravity="center_horizontal|top"
         android:layout_weight="2"
         android:gravity="center_vertical|center_horizontal"
-        android:text="_ _ _ _ _"
+        android:text=""
         android:textSize="62sp" />
 
     <ImageView
